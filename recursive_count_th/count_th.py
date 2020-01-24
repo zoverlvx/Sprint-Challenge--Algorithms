@@ -11,7 +11,7 @@ def count_th(word):
     return word.count("th")
 """
 
-def count_th(word, i=0, count=0):
+def count_th(word: str, i: int = 0, count: int = 0) -> int:
     length = len(word) - 1
     if i < length:
         if word[i] + word[i+1] == "th":
