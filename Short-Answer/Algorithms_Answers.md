@@ -5,7 +5,7 @@
 a) O(n) - it continues till the value of a is more than the product of n^3
 
 
-b) O(n^2) - the for loop will go through the range of n, then the while loop will continue till j is more than n
+b) O(log n) - the while loop breaks out of the for loop and thereby shortens the run time
 
 
 c) O(n) - this will continue till the number of bunnies is 0
