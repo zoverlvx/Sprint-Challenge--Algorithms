@@ -1,29 +1,34 @@
+from typing import Union, List, NewType
+
+On = NewType("ON", str)
+Off = NewType("OFF", str)
+
 class SortingRobot:
-    def __init__(self, l):
+    def __init__(self, l: List[int]):
         """
         SortingRobot takes a list and sorts it.
         """
-        self._list = l          # The list the robot is tasked with sorting
-        self._item = None       # The item the robot is holding
-        self._position = 0      # The list position the robot is at
-        self._light = "OFF"     # The state of the robot's light
-        self._time = 0          # A time counter (stretch)
+        self._list: List[int] = l          # The list the robot is tasked with sorting
+        self._item: int = None       # The item the robot is holding
+        self._position: int = 0      # The list position the robot is at
+        self._light: Union[On, Off] = "OFF"     # The state of the robot's light
+        self._time: int = 0          # A time counter (stretch)
 
-    def can_move_right(self):
+    def can_move_right(self) -> bool:
         """
         Returns True if the robot can move right or False if it's
         at the end of the list.
         """
         return self._position < len(self._list) - 1
 
-    def can_move_left(self):
+    def can_move_left(self) -> bool:
         """
         Returns True if the robot can move left or False if it's
         at the start of the list.
         """
         return self._position > 0
 
-    def move_right(self):
+    def move_right(self) -> bool:
         """
         If the robot can move to the right, it moves to the right and
         returns True. Otherwise, it stays in place and returns False.
@@ -36,7 +41,7 @@ class SortingRobot:
         else:
             return False
 
-    def move_left(self):
+    def move_left(self) -> bool:
         """
         If the robot can move to the left, it moves to the left and
         returns True. Otherwise, it stays in place and returns False.
@@ -49,7 +54,7 @@ class SortingRobot:
         else:
             return False
 
-    def swap_item(self):
+    def swap_item(self) -> None:
         """
         The robot swaps its currently held item with the list item in front
         of it.
@@ -59,7 +64,7 @@ class SortingRobot:
         # Swap the held item with the list item at the robot's position
         self._item, self._list[self._position] = self._list[self._position], self._item
 
-    def compare_item(self):
+    def compare_item(self) -> Union[int, None]:
         """
         Compare the held item with the item in front of the robot:
         If the held item's value is greater, return 1.
@@ -76,23 +81,23 @@ class SortingRobot:
         else:
             return 0
 
-    def set_light_on(self):
+    def set_light_on(self) -> None:
         """
         Turn on the robot's light
         """
         self._light = "ON"
-    def set_light_off(self):
+    def set_light_off(self) -> None:
         """
         Turn off the robot's light
         """
         self._light = "OFF"
-    def light_is_on(self):
+    def light_is_on(self) -> bool:
         """
         Returns True if the robot's light is on and False otherwise.
         """
         return self._light == "ON"
 
-    def sort(self):
+    def sort(self) -> None:
         """
         Sort the robot's list.
         """
